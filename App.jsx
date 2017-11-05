@@ -30,17 +30,17 @@ class Content extends React.Component {
 class Apicall extends React.Component {
   render() {
     return (<div>
-      <button onClick={() => this.GetCar()}>Get!</button>
+      <button onClick={() => GetCar()}>Get!</button>
     </div>);
   }
 }
 
 function GetCar() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "http://localhost:9090/jeyni-service/rest/car", true);
-  xhttp.send();
-  var response = JSON.parse(xhttp.responseText);
-  alert(response);
+  var url = "http://localhost:9090/jeyni-service/rest/car";
+  // result.json() create a promise
+  fetch(url).then(result => result.json().then(function(response) {
+    console.log(response);
+  }))
 }
 
 export default App;
